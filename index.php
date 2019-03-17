@@ -31,6 +31,22 @@ function quotes($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/quotes') {
+        $result = quotes($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text'  => $result
+                )
+            )
+        );
+    }
+}   
+#-------------------------[Close]-------------------------#
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');

@@ -192,7 +192,7 @@ if($message['type']=='text') {
             'messages' => array( 
                 array ( 
                         'type' => 'template', 
-                          'altText' => 'About Creator RpdBot', 
+                          'altText' => 'About Creator Bot Chaplin', 
                           'template' =>  
                           array ( 
                             'type' => 'buttons', 
@@ -200,8 +200,8 @@ if($message['type']=='text') {
                             'imageAspectRatio' => 'rectangle', 
                             'imageSize' => 'cover', 
                             'imageBackgroundColor' => '#FFFFFF', 
-                            'title' => 'Muhammad Raihan Permadi', 
-                            'text' => 'Creator RpdBot', 
+                            'title' => 'Muhammad Aksa Arsyad', 
+                            'text' => 'Creator This Bot', 
                             'actions' =>  
                             array ( 
                               0 =>  

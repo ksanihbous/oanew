@@ -181,15 +181,42 @@ function shalat($keyword) {
 	$result .= $json['data']['Maghrib'];
 	$result .= "\nIsya : ";
 	$result .= $json['data']['Isha'];
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $text
-            )
-        )
-    );
+    return $result;
+}
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/neon') { 
+     
+        $result = neon($options);
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Neon teks', 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result, 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => 'Teks Image Generator', 
+                            'text' => 'Cek Full Image', 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Click Here', 
+                                'uri' => $result, 
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
 }
 #-------------------------[Function]-------------------------#
 $pesan_datang = explode(" ", $message['text']);

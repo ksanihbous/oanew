@@ -55,7 +55,7 @@ $url=json_decode($json_data,1);
 $diterima = $url['response'];
 if($message['type']=='text')
 {
-if($url['result'] == 404)
+if($url['result'] == 200)
 	{
 		$balas = array(
 							'UserID' => $profil->userId,	

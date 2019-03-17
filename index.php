@@ -242,10 +242,6 @@ function cuaca($keyword) {
 	$result .= $json['weather']['0']['description'];
     return $result;
 }
-if (isset($balas)) {
-    $result = json_encode($balas);
-//$result = ob_get_clean();
-    file_put_contents('./balasan.json', $result);
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');

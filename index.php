@@ -99,8 +99,8 @@ $pesan=str_replace(" ", "%20", $pesan_datang);
 $url = 'http://ryns-api.herokuapp.com/pandorachat?text='.$pesan;
 $json_data = file_get_contents($url);
 $url=json_decode($json_data,1);
-$diterima = $url['answer'];
-if($message['type']=='text')
+$diterima = $url['text'];
+if($message['answer']=='text')
 {
 if($url['result'] == 200)
 	{

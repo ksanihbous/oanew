@@ -181,7 +181,15 @@ function shalat($keyword) {
 	$result .= $json['data']['Maghrib'];
 	$result .= "\nIsya : ";
 	$result .= $json['data']['Isha'];
-    return $result;
+    $balas = array(
+        'replyToken' => $replyToken,
+        'messages' => array(
+            array(
+                'type' => 'text',
+                'text' => $text
+            )
+        )
+    );
 }
 #-------------------------[Function]-------------------------#
 $pesan_datang = explode(" ", $message['text']);

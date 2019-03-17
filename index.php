@@ -31,6 +31,53 @@ function quotes($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
+#-------------------------[Function]-------------------------#
+# require_once('./src/function/search-1.php');
+# require_once('./src/function/download.php');
+# require_once('./src/function/random.php');
+# require_once('./src/function/search-2.php');
+# require_once('./src/function/hard.php');
+//show menu, saat join dan command /menu
+if ($type == 'join' || $command == '/menu') {
+    $text = "Halo Kak ^_^\nAku Bot Prediksi Cuaca, Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG";
+    $balas = array(
+        'replyToken' => $replyToken,
+        'messages' => array(
+            array(
+                'type' => 'text',
+                'text' => $text
+            )
+        )
+    );
+}
+//pesan bergambar
+if($message['type']=='text') {
+	    if ($command == '/cuaca') {
+        $result = cuaca($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}else if($message['type']=='sticker')
+{	
+	$balas = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Makasih Kak Stikernya ^_^'										
+									
+									)
+							)
+						);
+						
+}
 if($message['type']=='sticker')
 {	
 	$balas = array(

@@ -80,6 +80,37 @@ function brains($keyword) {
     return $result;
 }
 #-------------------------[Open]-------------------------#
+#-------------------------[Function]-------------------------#
+function trid($keyword) {
+    $uri = "http://api.secold.com/translate/id/" . $keyword;
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : Indonesian";
+    $result .= "\nTranslate : ";
+	$result .= $json['result'];
+    return $result;
+}
+#-------------------------[Function]-------------------------#
+function trja($keyword) {
+    $uri = "http://api.secold.com/translate/ja/" . $keyword;
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : Japanese";
+    $result .= "\nTranslate : ";
+	$result .= $json['result'];
+    return $result;
+}
+#-------------------------[Function]-------------------------#
+function trar($keyword) {
+    $uri = "http://api.secold.com/translate/ar/" . $keyword;
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : Arabic";
+    $result .= "\nTranslate : ";
+	$result .= $json['result'];
+    return $result;
+}
+#-------------------------[Function]-------------------------#
 #-------------------------[Open]-------------------------#
 function zodiak($keyword) {
     $uri = "https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal=" . $keyword;

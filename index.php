@@ -92,12 +92,12 @@ function trid($keyword) {
 }
 #-------------------------[Function]-------------------------#
 function trja($keyword) {
-    $uri = "http://api.secold.com/translate/ja/" . $keyword;
+    $uri = "http://ryns-api.herokuapp.com/translate?text=" . $keyword. "&to=ja";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $result = "Type : Japanese";
     $result .= "\nTranslate : ";
-	$result .= $json['result'];
+	$result .= $json['text'];
     return $result;
 }
 #-------------------------[Function]-------------------------#

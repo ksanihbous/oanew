@@ -377,6 +377,25 @@ function brain($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
+#===================================
+if($message['type']=='text') {
+	    if ($command == '/myinfo') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+										'type' => 'text',					
+										'text' => '====[InfoProfile]====
+Nama: '.$profil->displayName.'
+Status: '.$profil->statusMessage.'
+Picture: '.$profil->pictureUrl.'
+====[InfoProfile]===='
+									)
+							)
+						);
+				
+	}
+}
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/quotes') {

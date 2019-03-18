@@ -80,9 +80,18 @@ function brains($keyword) {
     return $result;
 }
 #-------------------------[Open]-------------------------#
+function tren($keyword) {
+    $uri = "http://ryns-api.herokuapp.com/translate?text=" . $keyword. "&to=en";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : English";
+    $result .= "\nTranslate : ";
+	$result .= $json['text'];
+    return $result;
+}
 #-------------------------[Function]-------------------------#
 function trid($keyword) {
-    $uri = "http://api.secold.com/translate/id/" . $keyword;
+    $uri = "http://ryns-api.herokuapp.com/translate?text=" . $keyword. "&to=id";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $result = "Type : Indonesian";
@@ -102,7 +111,7 @@ function trja($keyword) {
 }
 #-------------------------[Function]-------------------------#
 function trar($keyword) {
-    $uri = "http://api.secold.com/translate/ar/" . $keyword;
+    $uri = "http://ryns-api.herokuapp.com/translate?text=" . $keyword. "&to=ar";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $result = "Type : Arabic";
@@ -111,6 +120,16 @@ function trar($keyword) {
     return $result;
 }
 #-------------------------[Function]-------------------------#
+#-------------------------[Function]-------------------------#
+function trsu($keyword) {
+    $uri = "http://ryns-api.herokuapp.com/translate?text=" . $keyword. "&to=su";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : Sunda";
+    $result .= "\nTranslate : ";
+	$result .= $json['result'];
+    return $result;
+}
 #-------------------------[Open]-------------------------#
 function zodiak($keyword) {
     $uri = "https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal=" . $keyword;
@@ -490,6 +509,20 @@ if($message['type']=='text') {
 if($message['type']=='text') {
 	    if ($command == '/tr-en') {
         $result = tren($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/tr-su') {
+        $result = trsu($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(

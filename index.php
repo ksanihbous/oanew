@@ -177,6 +177,16 @@ function tts($keyword) {
     return $result; 
 }
 #-------------------------[Close]-------------------------#
+function surat($keyword) {
+    $uri = "https://al-quran-8d642.firebaseio.com/surat/" . $keyword . ".json?print=pretty";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = $json['ar'];
+    $result .= "\n\nArti : \n";
+    $result .= $json['id'];
+    return $result;
+}
+#-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 function urb_dict($keyword) {
     $uri = "http://api.urbandictionary.com/v0/define?term=" . $keyword;
@@ -362,6 +372,21 @@ if($message['type']=='text') {
 if($message['type']=='text') {
         if ($command == '/cuaca') {
         $result = cuaca($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/surat') {
+        $result = surat($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(

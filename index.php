@@ -288,6 +288,224 @@ if ($type == 'join') {
 }
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
+if ($command == '/jam') { 
+     
+        $result = wib($options); 
+        $result2 = wit($options); 
+        $result3 = wita($options); 
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                  'type' => 'template', 
+                  'altText' => 'Jam Indonesia', 
+                  'template' =>  
+                  array ( 
+                    'type' => 'carousel', 
+                    'columns' =>  
+                    array ( 
+                      0 =>  
+                      array ( 
+                        'thumbnailImageUrl' => 'https://preview.ibb.co/gXGfLU/20180913_194713.jpg', 
+                        'imageBackgroundColor' => '#FFFFFF', 
+                        'title' => 'WIB', 
+                        'text' => 'Jam Indonesia WIB', 
+                        'actions' =>  
+                        array ( 
+                          0 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result['time'], 
+                            'data' => $result['time'], 
+                          ), 
+                          1 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result['date'],
+                            'data' => $result['date'],
+                          ), 
+                        ), 
+                      ), 
+                      1 =>  
+                      array ( 
+                        'thumbnailImageUrl' => 'https://preview.ibb.co/nxaPfU/20180913_194725.jpg', 
+                        'imageBackgroundColor' => '#000000', 
+                        'title' => 'WIT', 
+                        'text' => 'Jam Indonesia WIT', 
+                        'actions' =>  
+                        array ( 
+                          0 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result2['time'], 
+                            'data' => $result2['time'], 
+                          ), 
+                          1 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result2['date'],
+                            'data' => $result2['date'],
+                          ), 
+                        ), 
+                      ), 
+                      2 =>  
+                      array ( 
+                        'thumbnailImageUrl' => 'https://preview.ibb.co/cPdc0U/20180913_194744.jpg', 
+                        'imageBackgroundColor' => '#000000', 
+                        'title' => 'WITA', 
+                        'text' => 'Jam Indonesia WITA', 
+                        'actions' =>  
+                        array ( 
+                          0 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result3['time'], 
+                            'data' => $result3['time'], 
+                          ), 
+                          1 =>  
+                          array ( 
+                            'type' => 'postback', 
+                            'label' => $result3['date'],
+                            'data' => $result3['date'],
+                          ), 
+                        ),  
+                      ),
+                    ), 
+                  ), 
+                ) 
+            ) 
+        ); 
+}
+}
+if($message['type']=='text') {
+        if ($command == '/jadwaltv') {
+        $result = tv($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array( 
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Open]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/test123') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                  'type' => 'bubble',
+                  'styles' => 
+                  array (
+                    'footer' => 
+                    array (
+                      'separator' => true,
+                    ),
+                  ),
+                  'body' => 
+                  array (
+                    'type' => 'box',
+                    'layout' => 'vertical',
+                    'contents' => 
+                    array (
+                      0 => 
+                      array (
+                        'type' => 'text',
+                        'text' => 'Arti Nama',
+                        'weight' => 'bold',
+                        'size' => 'xxl',
+                        'margin' => 'md',
+                      ),
+                      1 => 
+                      array (
+                        'type' => 'text',
+                        'text' => 'Test',
+                        'size' => 'xs',
+                        'color' => '#aaaaaa',
+                        'wrap' => true,
+                      ),
+                      2 => 
+                      array (
+                        'type' => 'separator',
+                        'margin' => 'xxl',
+                      ),
+                      3 => 
+                      array (
+                        'type' => 'box',
+                        'layout' => 'horizontal',
+                        'margin' => 'md',
+                        'contents' => 
+                        array (
+                          0 => 
+                          array (
+                            'type' => 'text',
+                            'text' => 'RpdBot',
+                            'size' => 'xs',
+                            'color' => '#aaaaaa',
+                            'flex' => 0,
+                          ),
+                          1 => 
+                          array (
+                            'type' => 'text',
+                            'text' => '#2018',
+                            'color' => '#aaaaaa',
+                            'size' => 'xs',
+                            'align' => 'end',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+            )
+        );
+    }
+}   
+if($message['type']=='text') {
+    if ($command == '/instagram') { 
+        
+        $result = instagram($options);
+        $altText2 = "Followers : " . $result['a3'];
+        $altText2 .= "\nFollowing :" . $result['a4'];
+        $altText2 .= "\nPost :" . $result['a5'];
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Instagram @' . $options, 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result['a7'], 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => $result['a6'], 
+                            'text' => $altText2, 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Check', 
+                                'uri' => $result['a8'],
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
+}
+#-------------------------[Open]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
         if ($command == '/creator') { 
      
         $balas = array( 

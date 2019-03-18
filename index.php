@@ -65,7 +65,7 @@ function tv($keyword) {
     return $result;
 }
 #-------------------------[Function Open]-------------------------#
-function brain($keyword) {
+function brains($keyword) {
     $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
@@ -297,6 +297,19 @@ function quotes($keyword) {
     return $result;
 }
 #-------------------------[Close]-------------------------#
+function brain($keyword) {
+    $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "「Brainly」";
+    $result .= "Status : Success!!!";
+    $result .= "\nSoal : ";
+    $result .= $json['title'];
+    $result .= "\nLink Jawaban : ";
+    $result .= $json['url'];
+    $result .= "\n「Done~」";
+    return $result;
+}
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/quotes') {

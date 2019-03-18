@@ -346,8 +346,19 @@ function quotes($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
-#-------------------------[Close]-------------------------#
+#============== BRAINLY SEARCH =============#
+#-------------------------[Function]-------------------------#
 function brain($keyword) {
+    $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "Type : Arabic";
+    $result .= "\nTranslate : ";
+	$result .= $json['url'];
+    return $result;
+}
+#-------------------------[Close]-------------------------#
+function brainss($keyword) {
     $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);

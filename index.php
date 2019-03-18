@@ -400,6 +400,91 @@ if($message['type']=='text') {
         );
     }
 }
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/qiblat') { 
+     
+        $result = qibla($options);
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Qiblat shalat', 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result, 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => 'Qiblat Shalat', 
+                            'text' => 'Cek Full Image', 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Click Here', 
+                                'uri' => $result, 
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
+}
+if($message['type']=='text') {
+        if ($command == '/arti-nama') {
+        $result = arti($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array( 
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/qr') { 
+     
+        $result = qr($options);
+        $balas = array( 
+            'replyToken' => $replyToken, 
+            'messages' => array( 
+                array ( 
+                        'type' => 'template', 
+                          'altText' => 'Qr-code Generator', 
+                          'template' =>  
+                          array ( 
+                            'type' => 'buttons', 
+                            'thumbnailImageUrl' => $result, 
+                            'imageAspectRatio' => 'rectangle', 
+                            'imageSize' => 'cover', 
+                            'imageBackgroundColor' => '#FFFFFF', 
+                            'title' => 'Qr-code', 
+                            'text' => 'Cek Full Image', 
+                            'actions' =>  
+                            array ( 
+                              0 =>  
+                              array ( 
+                                'type' => 'uri', 
+                                'label' => 'Click Here', 
+                                'uri' => $result, 
+                              ), 
+                            ), 
+                          ), 
+                        ) 
+            ) 
+        ); 
+    }
+}
+#-------------------------[Open]-------------------------#
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if ($message['type'] == 'text') {

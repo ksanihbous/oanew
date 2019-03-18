@@ -177,17 +177,17 @@ function tts($keyword) {
     return $result; 
 }
 #-------------------------[Close]-------------------------#
-#-------------------------[Function Open]-------------------------#
 function surat($keyword) {
     $uri = "https://al-quran-8d642.firebaseio.com/surat/" . $keyword . ".json?print=pretty";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
-    $result = "Surat Dalam Al-Quran";
-	$result .= $json['ar';
-	$result .= "\nArti : ";
-	$result .= $json['id'];
+    $result = "Ayat : \n";
+    $result .= $json['ar'];
+    $result .= "\n\Arti : \n";
+    $result .= $json['id'];
     return $result;
 }
+#-------------------------[Function Open]-------------------------#	 
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 function urb_dict($keyword) {

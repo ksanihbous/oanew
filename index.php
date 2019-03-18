@@ -96,7 +96,7 @@ function trid($keyword) {
     $json = json_decode($response->raw_body, true);
     $result = "Type : Indonesian";
     $result .= "\nTranslate : ";
-	$result .= $json['result'];
+	$result .= $json['text'];
     return $result;
 }
 #-------------------------[Function]-------------------------#
@@ -116,7 +116,7 @@ function trar($keyword) {
     $json = json_decode($response->raw_body, true);
     $result = "Type : Arabic";
     $result .= "\nTranslate : ";
-	$result .= $json['result'];
+	$result .= $json['text'];
     return $result;
 }
 #-------------------------[Function]-------------------------#
@@ -127,7 +127,7 @@ function trsu($keyword) {
     $json = json_decode($response->raw_body, true);
     $result = "Type : Sunda";
     $result .= "\nTranslate : ";
-	$result .= $json['result'];
+	$result .= $json['text'];
     return $result;
 }
 #-------------------------[Open]-------------------------#

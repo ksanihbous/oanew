@@ -106,7 +106,7 @@ function film_syn($keyword) {
 }
 #-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
-function film($keyword) {
+function films($keyword) {
     $uri = "http://www.omdbapi.com/?t=" . $keyword . '&plot=full&apikey=d5010ffe';
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
@@ -209,6 +209,28 @@ function qr($keyword) {
     $json = json_decode($response->raw_body, true); 
     $result .= "https://rest.farzain.com/api/qrcode.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     return $result; 
+}
+#=======================
+#-------------------------[Open]-------------------------#
+function film($keyword) {
+    $uri = "https://rest.farzain.com/api/film.php?id=" . $keyword . '&apikey=ppqeuy';
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "「Informasi Film」";
+    $result .= "\nJudul :";
+    $result .= $json['Title'];
+    $result .= "\nRilis : ";
+    $result .= $json['Released'];
+    $result .= "\nTipe : ";
+    $result .= $json['Genre'];
+    $result .= "\nActors : ";
+    $result .= $json['Actors'];
+    $result .= "\nBahasa : ";
+    $result .= $json['Language'];
+    $result .= "\nNegara : ";
+    $result .= $json['Country'];
+    $result .= "\n「Done~」";
+    return $result;
 }
 #-------------------------[Close]-------------------------#
 function ahli($keyword) {
@@ -369,7 +391,23 @@ if($message['type']=='text') {
 }
 }
 #-------------------------[Close]-------------------------#
-#============================= CUACA SC ====================#
+#============================= FILM SC ====================#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/film') {
+        $result = film($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+#-------------------------[Close]-------------------------#
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/cuaca') {

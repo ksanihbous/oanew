@@ -64,6 +64,22 @@ function tv($keyword) {
     $result .= "\n「Done~」";
     return $result;
 }
+#-------------------------[Function Open]-------------------------#
+function brainly($keyword) {
+    $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "「Jawaban Brainly」";
+    $result .= "\nStatus : Success!!!";
+    $result .= "\nStasiun : " . $keyword . "-";
+    $result .= "\nSoal : ";
+    $result .= $json['title'];
+    $result .= "\nLink Jawaban : ";
+    $result .= $json['url'];
+    $result .= "\n「Done~」";
+    return $result;
+}
+#-------------------------[Open]-------------------------#
 #-------------------------[Open]-------------------------#
 function zodiak($keyword) {
     $uri = "https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal=" . $keyword;
@@ -714,6 +730,20 @@ if($message['type']=='text') {
     }
 }
 #-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/brainly') {
+        $result = brainly($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array( 
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/test123') {

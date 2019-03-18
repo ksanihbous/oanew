@@ -18,57 +18,6 @@ $message 	= $client->parseEvents()[0]['message'];
 $profil = $client->profil($userId);
 $pesan_datang = $message['text'];
 #-------------------------[Open]-------------------------#
-#-------------------------[Open]-------------------------#
-function neon($keyword) { 
-    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
- 
-    $response = Unirest\Request::get("$uri"); 
- 
-    $json = json_decode($response->raw_body, true); 
-    $result .= "https://rest.farzain.com/api/photofunia/neon_sign.php?text=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
-    return $result; 
-}
-#-------------------------[Close]-------------------------#
-#-------------------------[Open]-------------------------#
-function light($keyword) { 
-    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
- 
-    $response = Unirest\Request::get("$uri"); 
-    $json = json_decode($response->raw_body, true); 
-    $result .= " https://rest.farzain.com/api/photofunia/light_graffiti.php?text=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
-    return $result; 
-}
-#-------------------------[Close]-------------------------#
-#-------------------------[Open]-------------------------#
-function quotes($keyword) {
-    $uri = "https://rest.farzain.com/api/motivation.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「Quotes」";
-    $result .= "Status : Success!!!";
-    $result .= "\nQuotes : ";
-    $result .= $json['result']['quotes'];
-    $result .= "\nBy : ";
-    $result .= $json['result']['by'];
-    $result .= "\n「Done~」";
-    return $result;
-}
-#-------------------------[Close]-------------------------#
-#-------------------------[Open]-------------------------#
-if($message['type']=='text') {
-        if ($command == '/quotes') {
-        $result = quotes($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text'  => $result
-                )
-            )
-        );
-    }
-}   
 #-------------------------[Close]-------------------------#
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
@@ -222,6 +171,57 @@ function shalat($keyword) {
 	$result .= $json['data']['Isha'];
     return $result;
 }
+#-------------------------[Open]-------------------------#
+function neon($keyword) { 
+    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
+ 
+    $response = Unirest\Request::get("$uri"); 
+ 
+    $json = json_decode($response->raw_body, true); 
+    $result .= "https://rest.farzain.com/api/photofunia/neon_sign.php?text=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    return $result; 
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+function light($keyword) { 
+    $uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20171227T171852Z.fda4bd604c7bf41f.f939237fb5f802608e9fdae4c11d9dbdda94a0b5&text=" . $keyword . "&lang=id-id"; 
+ 
+    $response = Unirest\Request::get("$uri"); 
+    $json = json_decode($response->raw_body, true); 
+    $result .= " https://rest.farzain.com/api/photofunia/light_graffiti.php?text=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    return $result; 
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+function quotes($keyword) {
+    $uri = "https://rest.farzain.com/api/motivation.php?apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = "「Quotes」";
+    $result .= "Status : Success!!!";
+    $result .= "\nQuotes : ";
+    $result .= $json['result']['quotes'];
+    $result .= "\nBy : ";
+    $result .= $json['result']['by'];
+    $result .= "\n「Done~」";
+    return $result;
+}
+#-------------------------[Close]-------------------------#
+#-------------------------[Open]-------------------------#
+if($message['type']=='text') {
+        if ($command == '/quotes') {
+        $result = quotes($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text'  => $result
+                )
+            )
+        );
+    }
+}   
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/creator') { 

@@ -65,7 +65,7 @@ function tv($keyword) {
     return $result;
 }
 #-------------------------[Function Open]-------------------------#
-function brainly($keyword) {
+function brain($keyword) {
     $uri = "https://rest.farzain.com/api/brainly.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
@@ -193,7 +193,7 @@ function tts($keyword) {
     return $result; 
 }
 #-------------------------[Close]-------------------------#
-function surat($keyword) {
+function surah($keyword) {
     $uri = "https://al-quran-8d642.firebaseio.com/surat/" . $keyword . ".json?print=pretty";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
@@ -442,7 +442,7 @@ if($message['type']=='text') {
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/surat') {
-        $result = surat($options);
+        $result = surah($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -732,7 +732,7 @@ if($message['type']=='text') {
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/brainly') {
-        $result = brainly($options);
+        $result = brain($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(

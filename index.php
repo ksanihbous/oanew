@@ -14,14 +14,13 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $replyToken = $client->parseEvents()[0]['replyToken'];
-$message 	= $client->parseEvents()[0]['message'];
-$profil = $client->profil($userId);
-$timestamp	= $client->parseEvents()[0]['timestamp'];
-$type 		= $client->parseEvents()[0]['type'];
-$message 	= $client->parseEvents()[0]['message'];
-$messageid 	= $client->parseEvents()[0]['message']['id'];
+$timestamp  = $client->parseEvents()[0]['timestamp'];
+$type       = $client->parseEvents()[0]['type'];
+$message    = $client->parseEvents()[0]['message'];
+$messageid  = $client->parseEvents()[0]['message']['id'];
 $profil = $client->profil($userId);
 $pesan_datang = explode(" ", $message['text']);
+$msg_type = $message['type'];
 $command = $pesan_datang[0];
 $options = $pesan_datang[1];
 if (count($pesan_datang) > 2) {
@@ -30,7 +29,7 @@ if (count($pesan_datang) > 2) {
         $options .= $pesan_datang[$i];
     }
 }
-#-------------------------[Function]-------------------------#
+#-------------------------[Function Open]-------------------------#
 function shalat($keyword) {
     $uri = "https://time.siswadi.com/pray/" . $keyword;
     $response = Unirest\Request::get("$uri");

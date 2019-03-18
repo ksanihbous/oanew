@@ -739,6 +739,21 @@ function cuaca($keyword) {
 	$result .= $json['weather']['0']['description'];
     return $result;
 }
+#============================= CUACA SC ====================#
+if($message['type']=='text') {
+	    if ($command == '/cuaca') {
+        $result = cuaca($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');
@@ -748,7 +763,7 @@ function cuaca($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Assalamualaikum Kakak, aku adalah bot jadwal shalat, silahkan ketik\n\n/shalat <nama tempat>\n\nnanti aku bakalan kasih tahu jam berapa waktunya shalat ^_^";
+    $text = "Assalamualaikum Kakak,Terimakasih Telah invite aku ke group ini silahkan ketik Help untuk lihat command aku :)";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(

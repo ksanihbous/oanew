@@ -222,6 +222,70 @@ if($message['type']=='text') {
         );
     }
 }   
+#--------------------------- INSTAGRAM ------------------#
+#-------------------------[Close]-------------------------#
+function instagram($keyword) {
+    $uri = "https://rest.farzain.com/api/ig_profile.php?id=" . $keyword . "&apikey=fDh6y7ZwXJ24eiArhGEJ55HgA";
+  
+    $response = Unirest\Request::get("$uri");
+  
+    $json = json_decode($response->raw_body, true);
+    $parsed = array();
+    $parsed['a1'] = $json['info']['username'];
+    $parsed['a2'] = $json['info']['bio'];
+    $parsed['a3'] = $json['count']['followers'];
+    $parsed['a4'] = $json['count']['following'];
+    $parsed['a5'] = $json['count']['post'];
+    $parsed['a6'] = $json['info']['full_name'];
+    $parsed['a7'] = $json['info']['profile_pict'];
+    $parsed['a8'] = "https://www.instagram.com/" . $keyword;
+    return $parsed;
+}
+//show menu, saat join dan command,menu
+if ($command == 'Help') {
+    $text .= "「Keyword RpdBot~」\n\n";
+    $text .= "- Help\n";
+    $text .= "- /jam \n";
+    $text .= "- /quotes \n";
+    $text .= "- /say [teks] \n";
+    $text .= "- /definition [teks] \n";
+    $text .= "- /cooltext [teks] \n";
+    $text .= "- /shalat [lokasi] \n";
+    $text .= "- /qiblat [lokasi] \n";
+    $text .= "- /film [teks] \n";
+    $text .= "- /qr [teks] \n";
+    $text .= "- /neon [teks] \n";
+    $text .= "- /ahli [nama] \n";
+    $text .= "- /arti-nama [nama] \n";
+    $text .= "- /light [teks] \n";
+    $text .= "- /film-syn [Judul] \n";
+    $text .= "- /zodiak [tanggal lahir] \n";
+        $text .= "- /instagram [unsername] \n";
+        $text .= "- /jadwaltv [stasiun] \n";
+    $text .= "- /creator \n";
+    $text .= "\n「Done~」";
+    $balas = array(
+        'replyToken' => $replyToken,
+        'messages' => array(
+            array(
+                'type' => 'text',
+                'text' => $text
+            )
+        )
+    );
+}
+if ($type == 'join') {
+    $text = "Terimakasih Telah invite aku ke group ini silahkan ketik Help untuk lihat command aku :)";
+    $balas = array(
+        'replyToken' => $replyToken,
+        'messages' => array(
+            array(
+                'type' => 'text',
+                'text' => $text
+            )
+        )
+    );
+}
 #-------------------------[Open]-------------------------#
 if($message['type']=='text') {
         if ($command == '/creator') { 

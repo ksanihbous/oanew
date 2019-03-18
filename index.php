@@ -444,6 +444,63 @@ function cuaca($keyword) {
 	$result .= $json['weather']['0']['description'];
     return $result;
 }
+//translate//
+if($message['type']=='text') {
+	    if ($command == '/tr-ar') {
+        $result = trar($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/tr-ja') {
+        $result = trja($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/tr-id') {
+        $result = trid($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '/tr-en') {
+        $result = tren($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
 //show menu, saat join dan command,menu
 if ($command == 'Help') {
     $text .= "「Keyword RpdBot~」\n\n";
